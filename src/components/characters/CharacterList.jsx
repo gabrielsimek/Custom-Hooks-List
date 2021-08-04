@@ -2,7 +2,7 @@ import React from 'react';
 import CharacterItem from './CharacterItem';
 
 const CharacterList = () => {
-  const characters = useCharacters();
+  const [characters, loading] = useCharacters();
   const characterItems = characters.map((character) => {
     return (
       <li key={character.id}>
