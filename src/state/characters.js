@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { fetchCharacters } from '../services/fetchCharacters.js';
+import { useState, useEffect } from 'react';
+import { fetchCharacters } from '../services/rickAndMortyApi.js';
 
 const useCharacters = () => {
-  const [characters, setCharacters] = useState({});
+  const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCharacters()
-      .then(setCharacters)
+      .then(characters => setCharacters(characters))
       .finally(() => setLoading(false));
-  });
+  }, []);
 
   return [characters, loading];
 };

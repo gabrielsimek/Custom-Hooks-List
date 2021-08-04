@@ -1,8 +1,9 @@
 import React from 'react';
 import CharacterItem from './CharacterItem';
-
+import { useCharacters } from '../../state/characters';
 const CharacterList = () => {
   const [characters, loading] = useCharacters();
+
   const characterItems = characters.map((character) => {
     return (
       <li key={character.id}>
@@ -15,3 +16,5 @@ const CharacterList = () => {
   return <ul>{characterItems}</ul>;
   
 };
+
+export default CharacterList;
