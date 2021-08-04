@@ -19,3 +19,5 @@ CharacterItem.propTypes = {
   status: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired
 };
+
+export default CharacterItem;
