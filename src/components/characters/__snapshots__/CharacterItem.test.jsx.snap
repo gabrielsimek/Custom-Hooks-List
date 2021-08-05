@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App CharacterItem renders App 1`] = `
+<DocumentFragment>
+  <figure>
+    <img />
+    <figcaption>
+      <h2 />
+      <p />
+      <p />
+    </figcaption>
+  </figure>
+</DocumentFragment>
+`;

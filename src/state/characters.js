@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCharacters, fetchCharacter } from '../services/rickAndMortyApi.js';
-
+//
 const useCharacters = (page) => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
