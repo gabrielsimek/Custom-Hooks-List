@@ -5,6 +5,7 @@ import { setupServer } from 'msw/node';
 import { MemoryRouter } from 'react-router-dom';
 import CharacterList from '../characters/CharacterList';
 import CharacterDetails from '../details/CharacterDetails';
+import App from './App';
 const response = { results: 
   [...Array(20)].map((_, i) => {
     return  {
@@ -98,14 +99,14 @@ const server = setupServer(
       );
     })
 );
-
-//mock useParams b/c it does not work as intended w/ testing
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), 
-  useParams: () => ({
-    id: 1
-  })
-}));
+//not nec when only rendering app
+// mock useParams b/c it does not work as intended w/ testing
+// jest.mock('react-router-dom', () => ({
+//   ...jest.requireActual('react-router-dom'), 
+//   useParams: () => ({
+//     id: 1
+//   })
+// }));
 
 describe('RickAndMortyCharacters Container', () => {
   beforeAll(() => server.listen());
@@ -114,7 +115,7 @@ describe('RickAndMortyCharacters Container', () => {
   it('displays a list of characters', async () => {
     render(
       <MemoryRouter  initialEntries={['/']}>
-        <CharacterList />
+        <App />
       </MemoryRouter>
     ); 
     screen.getByText('Loading...');
@@ -125,7 +126,7 @@ describe('RickAndMortyCharacters Container', () => {
   it('displays a character Detail page', async () => {
     render(
       <MemoryRouter initialEntries={['/1']}>
-        <CharacterDetails params={{ id: 1 }} />
+        <App />
       </MemoryRouter>
     );
     screen.getByText('Loading...');
