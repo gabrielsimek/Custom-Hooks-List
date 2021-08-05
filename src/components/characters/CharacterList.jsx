@@ -10,19 +10,24 @@ const CharacterList = () => {
 
   const characterItems = characters.map((character) => {
     return (
-      <>
-        <Paging page={page} onClick={handlePageClick}/>
-        <li key={character.id}>
-          <Link to={`/${character.id}`}>
-            <CharacterItem {...character} />      
-          </Link>
-        </li>
-      </>
+    
+        
+      <li key={character.id}>
+        <Link to={`/${character.id}`}>
+          <CharacterItem {...character} />      
+        </Link>
+      </li>
+     
     );
   });
 
   if(loading) return <h1>Loading...</h1>;
-  return <ul>{characterItems}</ul>;
+  return (
+    <>  <Paging page={page} characterLength={characters.length}
+      onClick={handlePageClick}/>
+    <ul>{characterItems}</ul>
+    </>
+  );
   
 };
 
