@@ -11,7 +11,7 @@ const useCharacters = (page) => {
       .then(characters => setCharacters(characters))
       .finally(() => setLoading(false));
   }, [page]);
-  
+
   return [characters, loading];
 };
 
