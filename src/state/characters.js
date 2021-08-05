@@ -20,9 +20,11 @@ const useCharacters = (page) => {
 const useCharacter = () => {
   const [character, setCharacter] = useState({});
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
+  const params = useParams();
+  console.log(params);
+  // const { id } = useParams();
   useEffect(() => {
-    fetchCharacter(id)
+    fetchCharacter(params.id)
       .then(setCharacter)
       .finally(() => setLoading(false));
   }, []);

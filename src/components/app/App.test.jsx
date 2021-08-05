@@ -28,7 +28,7 @@ const server = setupServer(
       );
     }),
   rest.get(
-    'https://rickandmortyapi.com/api/character/undefined',
+    'https://rickandmortyapi.com/api/character/1',
     (req, res, ctx) => {
       return res(
         ctx.json(
@@ -99,6 +99,14 @@ const server = setupServer(
     })
 );
 
+//mock useParams b/c it does not work as intended w/ testing
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), 
+  useParams: () => ({
+    id: 1
+  })
+}));
+
 describe('RickAndMortyCharacters Container', () => {
   beforeAll(() => server.listen());
   afterAll(() => server.close());
@@ -117,7 +125,7 @@ describe('RickAndMortyCharacters Container', () => {
   it('displays a character Detail page', async () => {
     render(
       <MemoryRouter initialEntries={['/1']}>
-        <CharacterDetails match={{ params: { id: 1 } }} />
+        <CharacterDetails params={{ id: 1 }} />
       </MemoryRouter>
     );
     screen.getByText('Loading...');
@@ -128,7 +136,5 @@ describe('RickAndMortyCharacters Container', () => {
     await screen.findByText('Location: Earth (Replacement Dimension)');
     await screen.findByText('Type: No Type');
     await screen.findAllByAltText('Rick Sanchez');
-
-    
   });
 });
