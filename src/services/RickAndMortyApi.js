@@ -1,6 +1,5 @@
-const fetchCharacters = () => {
-  
-  return fetch('https://rickandmortyapi.com/api/character')
+const fetchCharacters = (page) => {
+  return fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
     .then(characters => characters.json())
     .then(({ results }) => results);
 };

@@ -3,15 +3,15 @@ import {
   fetchCharacters, 
   fetchCharacter } from '../services/rickAndMortyApi.js';
 import { useParams } from 'react-router-dom';
-const useCharacters = () => {
+const useCharacters = (page) => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    fetchCharacters()
+    fetchCharacters(page)
       .then(characters => setCharacters(characters))
       .finally(() => setLoading(false));
-  }, []);
+  }, [page]);
+
 
   return [characters, loading];
 };
