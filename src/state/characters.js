@@ -7,6 +7,7 @@ const useCharacters = (page) => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    // setLoading(true);
     fetchCharacters(page)
       .then(characters => setCharacters(characters))
       .finally(() => setLoading(false));

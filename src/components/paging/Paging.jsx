@@ -6,12 +6,14 @@ const Paging = ({ page, characterLength, onClick }) => {
       <button 
         disabled={page <= 1} 
         onClick={() => onClick(-1)}>
-        Prev</button>
+        Prev
+      </button>
       <p>{page}</p>
       <button 
         disabled={characterLength < 20}
         onClick={() => onClick(1)}>
-      Next</button>
+        Next
+      </button>
     </>
   );
 };
