@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { 
-  fetchCharacters, 
+import { fetchCharacters, 
   fetchCharacter } from '../services/rickAndMortyApi.js';
 import { useParams } from 'react-router-dom';
 const useCharacters = (page) => {
@@ -20,11 +19,11 @@ const useCharacters = (page) => {
 const useCharacter = () => {
   const [character, setCharacter] = useState({});
   const [loading, setLoading] = useState(true);
-  const params = useParams();
-  console.log(params);
-  // const { id } = useParams();
+  // const {params} = useParams();
+  // console.log(params);
+  const { id } = useParams();
   useEffect(() => {
-    fetchCharacter(params.id)
+    fetchCharacter(id)
       .then(setCharacter)
       .finally(() => setLoading(false));
   }, []);
