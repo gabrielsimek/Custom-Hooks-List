@@ -27,7 +27,6 @@ const useCharacter = () => {
   }, []);
 
   return [character, loading];
-
 };
 
 export { useCharacters, useCharacter };
